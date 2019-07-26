@@ -7,8 +7,17 @@ import session = require("express-session");
 // Create a new express application instance
 const app: express.Application = express();
 
+// Process .env is defined ?
+if (
+  !process.env.PORT ||
+  !process.env.SECRET_SESSION
+) {
+  process.stdout.write(JSON.stringify(process.env));
+  throw new Error("please verify you .env or .env-sample file");
+}
+
 // Constants
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT;
 
 // My controller
 import routes from "./routes/index";
@@ -21,7 +30,7 @@ app.use(
   session({
     resave: true,
     saveUninitialized: true,
-    secret: process.env._SECRET_SESSION || "Node kafka by Maissacrement"
+    secret: process.env.SECRET_SESSION
   })
 );
 
@@ -30,7 +39,7 @@ app.use(
 // Cors config
 const header = (
   _: express.Request,
-  res: express.Response,
+  res: express.Response, 
   next: express.NextFunction
 ) => {
   res.header("Access-Control-Allow-Origin", "*");

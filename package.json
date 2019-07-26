@@ -23,8 +23,8 @@
     "coverage": "nyc --include=\"src/**/*.ts\" --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
-    "dev": "node --inspect=5858 -r ts-node/register src/App.ts",
-    "dev:nodebug": "ts-node-dev --respawn --transpileOnly src/App.ts"
+    "dev": "node --inspect=5858 -r ts-node/register bin/dev",
+    "dev:nodebug": "ts-node-dev --respawn --transpileOnly bin/dev"
   },
   "dependencies": {
     "@types/cors": "^2.8.5",
@@ -33,7 +33,8 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "kafka-node": "^4.1.3",
-    "ts-node-dev": "^1.0.0-pre.40"
+    "ts-node-dev": "^1.0.0-pre.40",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -46,6 +47,7 @@
     "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
+    "dotenv": "^8.0.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.19.1",
     "nyc": "^13.0.1",
