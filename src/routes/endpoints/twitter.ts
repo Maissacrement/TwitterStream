@@ -15,7 +15,7 @@ const path: string = 'statuses/filter';
 // Define Stream
 const stream: EventEmitter = client.stream(path, params);
 
-// Function
+// For a data return an object
 const parseChunkToObject: any = (data: any) => {
   const element: object = 
     (typeof data) === "object" ? data : {};
@@ -23,13 +23,14 @@ const parseChunkToObject: any = (data: any) => {
   return element;
 }
 
-const onReceiveData = (event: Twitter.ResponseData) => {
-  // parse to object
+// Process stream on success
+const onReceiveData: any = (event: Twitter.ResponseData) => {
+  // Get for each chunck a data object --> resolve chunck == 'undefined'
   const chunck: any = parseChunkToObject(event);
   const tweetIsDefine: boolean = Object.prototype.hasOwnProperty.call(event, 'user');
   
   if(tweetIsDefine) {
-    // When i have get my object
+    // Here i can work on my object
     process.stdout.write(JSON.stringify({
       text: chunck.text,
       username:  chunck.user.name
@@ -37,7 +38,8 @@ const onReceiveData = (event: Twitter.ResponseData) => {
   }
 };
 
-const onError = (error: any) => {
+// Proccess stream on error
+const onError: any = (error: any) => {
   throw error;
 };
 
