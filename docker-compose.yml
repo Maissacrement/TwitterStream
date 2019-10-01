@@ -1,0 +1,12 @@
+version: "3"
+services:
+  stempelwebservice:
+    build : .
+    container_name: "stempelwebservice"
+    network_mode: host
+    ports:
+      - 49180:8082
+    depends_on:
+      - psqlservice
+    env_file:
+      - .env
