@@ -11,10 +11,10 @@ WORKDIR /app
 COPY package.json .
 RUN apk update && \
     apk add bash  && \
-    yarn
+    yarn && yarn build
 
 # ADD REPO ON DOCKER
 COPY . .
 
 # FUNCTIONNALITY
-ENTRYPOINT ["yarn", "dev:nodebug"]
+ENTRYPOINT ["yarn", "prod"]

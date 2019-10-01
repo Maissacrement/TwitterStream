@@ -3,8 +3,8 @@ import express = require("express");
 const router: express.Router = express.Router();
 
 // Import Pages
-import "./endpoints/twitter";
 import BadRequest from "./endpoints/badRequest";
+import "./endpoints/twitter";
 
 router.get("/*", BadRequest);
 

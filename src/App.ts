@@ -8,6 +8,7 @@ import session = require("express-session");
 const app: express.Application = express();
 
 // Process .env is defined ?
+
 if (!process.env.PORT || !process.env.SECRET_SESSION) {
   process.stdout.write(JSON.stringify(process.env));
   throw new Error("please verify you .env or .env-sample file");
