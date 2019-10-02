@@ -1,10 +1,10 @@
 // External Module Load
-//import BadRequest from "../src/routes/endpoints/badRequest";
-import router from "../src/routes/index";
+// import BadRequest from "../src/routes/endpoints/badRequest";
 import * as chai from "chai";
 import chaiHttp = require("chai-http");
-import * as supertest from "supertest";
 import express = require("express");
+import * as supertest from "supertest";
+import router from "../src/routes/index";
 
 // Express
 const app: express.Application = express();
@@ -21,12 +21,12 @@ describe("BadRequest test", () => {
       .get("/dfezfezfezfezdza")
       .then(value => {
         expect(value.body).to.be.a("object");
-        console.log(expect(value.body));
-
+        const response = expect(value.body);
+        process.stdout.write(`${JSON.stringify(response, null, " ")}`);
         done();
       })
       .catch(err => {
-        console.log(`${err}`);
+        process.stdout.write(`${JSON.stringify(err, null, " ")}`);
       });
   });
 });
