@@ -1,14 +1,12 @@
-import index = require("../src/example/index");
 import * as chai from "chai";
+import index = require("../src/example/index");
 
 const expect = chai.expect;
 describe("index - Greeter", () => {
   it("should provide Greeter", () => {
-    expect(index.Greeter).to.not.be.undefined;
-  });
-});
-describe("index - Greeter", () => {
-  it("should provide Greeter", () => {
-    expect(index.Greeter).to.not.be.undefined;
+    if (expect(index.Greeter).to.not.be.undefined) {
+      return true;
+    }
+    return false;
   });
 });
