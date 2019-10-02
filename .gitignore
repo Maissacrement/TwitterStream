@@ -1,7 +1,6 @@
 # environement
 .env
 deploy.env
-jenv
 
 # compiled output
 /dist
