@@ -1,4 +1,3 @@
-import { text } from "body-parser";
 import { EventEmitter } from "stream";
 import Twitter = require("twitter");
 

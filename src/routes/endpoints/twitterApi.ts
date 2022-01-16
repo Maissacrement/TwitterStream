@@ -61,13 +61,13 @@ const parseChunkToObject: any = (data: any) => {
 
 const getTweet = (req: any, res: any) => {
   const searchBroker = stream({ track: req.query.search })
-  let i = 0;
+  // let i = 0;
   searchBroker.on('data', (event: Twitter.ResponseData) => {
     const chunck: any = parseChunkToObject(event);
     const tweetIsDefine: boolean = Object.prototype.hasOwnProperty.call(event,"user");
     if (tweetIsDefine) {
       res.write(JSON.stringify({ text: chunck.text, username: chunck.user.name }, null, 2) + "\n")
-      i++
+      // i++
     }
     //if (i>3) res.end()
 
