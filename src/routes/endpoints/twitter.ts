@@ -17,11 +17,10 @@ const stream: EventEmitter = client.stream(path, params);
 
 // For a data return an object
 
+/*
 const parseChunkToObject: any = (data: any) => {
   return typeof data === "object" ? data : {};
 };
-
-/*
 stream.on('data', (event) => {
   const chunck: any = parseChunkToObject(event);
   if('text' in chunck) {
