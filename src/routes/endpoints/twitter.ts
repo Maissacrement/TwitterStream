@@ -21,13 +21,14 @@ const parseChunkToObject: any = (data: any) => {
   return typeof data === "object" ? data : {};
 };
 
+/*
 stream.on('data', (event) => {
   const chunck: any = parseChunkToObject(event);
   if('text' in chunck) {
     console.log(chunck.user.name)
     console.log(chunck.text)
   }
-});
+});*/
 
 // Proccess stream on error
 const onError: any = (error: any) => {

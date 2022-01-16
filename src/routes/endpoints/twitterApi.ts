@@ -73,7 +73,7 @@ const getTweet = (req: any, res: any) => {
 
   })
 
-  searchBroker.on('error', (err) => console.log(err))
+  searchBroker.on('error', (err) => process.stdout.write('' + err))
 };
 
 export { getTweet };
