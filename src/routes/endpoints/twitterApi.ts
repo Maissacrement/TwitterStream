@@ -1,4 +1,3 @@
-
 // import { stream, Twitter } from "./twitter";
 import { EventEmitter } from "stream";
 // import * as fs from 'fs';
@@ -19,14 +18,15 @@ const client: Twitter = new Twitter({
 const path: string = "statuses/filter";
 
 // Define Stream
-const stream: (params: { track: string }) => EventEmitter = (params: { track: string }) => client.stream(path, params);
+const stream: (params: { track: string }) => EventEmitter = (params: {
+  track: string;
+}) => client.stream(path, params);
 
 // Proccess stream on error
 /*const onError: any = (error: any) => {
   throw new Error(error);
 };
 stream.on("error", onError);*/
-
 
 /*
 export { stream, Twitter };
@@ -60,20 +60,28 @@ const parseChunkToObject: any = (data: any) => {
 };
 
 const getTweet = (req: any, res: any) => {
-  const searchBroker = stream({ track: req.query.search })
+  const searchBroker = stream({ track: req.query.search });
   // let i = 0;
-  searchBroker.on('data', (event: Twitter.ResponseData) => {
+  searchBroker.on("data", (event: Twitter.ResponseData) => {
     const chunck: any = parseChunkToObject(event);
-    const tweetIsDefine: boolean = Object.prototype.hasOwnProperty.call(event,"user");
+    const tweetIsDefine: boolean = Object.prototype.hasOwnProperty.call(
+      event,
+      "user"
+    );
     if (tweetIsDefine) {
-      res.write(JSON.stringify({ text: chunck.text, username: chunck.user.name }, null, 2) + "\n")
+      res.write(
+        JSON.stringify(
+          { text: chunck.text, username: chunck.user.name },
+          null,
+          2
+        ) + "\n"
+      );
       // i++
     }
     //if (i>3) res.end()
+  });
 
-  })
-
-  searchBroker.on('error', (err) => process.stdout.write('' + err))
+  searchBroker.on("error", err => process.stdout.write("" + err));
 };
 
 export { getTweet };
