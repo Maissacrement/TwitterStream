@@ -6,7 +6,5 @@ services:
     network_mode: host
     ports:
       - 49180:8082
-    depends_on:
-      - psqlservice
     env_file:
       - .env
